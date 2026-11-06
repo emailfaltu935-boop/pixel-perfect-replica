@@ -27,7 +27,7 @@ function Timeline() {
   const ref = useRef<HTMLDivElement>(null);
   const [vis, setVis] = useState(false);
   useEffect(() => {
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setVis(true), { threshold: 0.1 });
+    const io = new IntersectionObserver(([e]) => e?.isIntersecting && setVis(true), { threshold: 0.1 });
     if (ref.current) io.observe(ref.current);
     return () => io.disconnect();
   }, []);

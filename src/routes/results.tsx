@@ -31,7 +31,7 @@ const DATA: Record<string, { cls: string; rider: string; horse: string; score: s
 
 function Results() {
   const tabs = Object.keys(DATA);
-  const [tab, setTab] = useState(tabs[0]);
+  const [tab, setTab] = useState<string>(tabs[0] ?? "Dressage");
   return (
     <>
       <PageHero eyebrow="Results" title="Celebrating every ride" intro="Results from our recent shows. Well done to everyone who took part!" />
@@ -47,7 +47,7 @@ function Results() {
           </div>
           <Reveal key={tab} className="mt-10 overflow-hidden rounded-3xl border bg-card shadow-soft">
             <div className="hidden grid-cols-4 bg-mist px-8 py-4 eyebrow text-navy md:grid"><span>Class</span><span>Rider</span><span>Horse</span><span className="text-right">Result</span></div>
-            {DATA[tab].map((r, idx) => (
+            {(DATA[tab] ?? []).map((r, idx) => (
               <div key={idx} className="grid grid-cols-2 gap-1 border-t px-8 py-5 md:grid-cols-4 md:items-center">
                 <span className="font-display text-lg text-navy">{r.cls}</span>
                 <span className="text-right md:text-left">{r.rider}</span>
