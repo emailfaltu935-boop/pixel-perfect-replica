@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LessonsRouteImport } from './routes/lessons'
+import { Route as MembershipRouteImport } from './routes/membership'
+import { Route as ResultsRouteImport } from './routes/results'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LessonsRoute = LessonsRouteImport.update({
+  id: '/lessons',
+  path: '/lessons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipRoute = MembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/lessons': typeof LessonsRoute
+  '/membership': typeof MembershipRoute
+  '/results': typeof ResultsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lessons': typeof LessonsRoute
+  '/membership': typeof MembershipRoute
+  '/results': typeof ResultsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/lessons': typeof LessonsRoute
+  '/membership': typeof MembershipRoute
+  '/results': typeof ResultsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/lessons' | '/membership' | '/results'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/lessons' | '/membership' | '/results'
+  id: '__root__' | '/' | '/lessons' | '/membership' | '/results'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LessonsRoute: typeof LessonsRoute
+  MembershipRoute: typeof MembershipRoute
+  ResultsRoute: typeof ResultsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lessons': {
+      id: '/lessons'
+      path: '/lessons'
+      fullPath: '/lessons'
+      preLoaderRoute: typeof LessonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership': {
+      id: '/membership'
+      path: '/membership'
+      fullPath: '/membership'
+      preLoaderRoute: typeof MembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LessonsRoute: LessonsRoute,
+  MembershipRoute: MembershipRoute,
+  ResultsRoute: ResultsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
