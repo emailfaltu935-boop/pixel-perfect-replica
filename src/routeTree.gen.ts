@@ -10,13 +10,38 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConstitutionRouteImport } from './routes/constitution'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as MembershipRouteImport } from './routes/membership'
+import { Route as MerchandiseRouteImport } from './routes/merchandise'
 import { Route as ResultsRouteImport } from './routes/results'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstitutionRoute = ConstitutionRouteImport.update({
+  id: '/constitution',
+  path: '/constitution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LessonsRoute = LessonsRouteImport.update({
@@ -29,6 +54,11 @@ const MembershipRoute = MembershipRouteImport.update({
   path: '/membership',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchandiseRoute = MerchandiseRouteImport.update({
+  id: '/merchandise',
+  path: '/merchandise',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
@@ -37,35 +67,83 @@ const ResultsRoute = ResultsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/constitution': typeof ConstitutionRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/history': typeof HistoryRoute
   '/lessons': typeof LessonsRoute
   '/membership': typeof MembershipRoute
+  '/merchandise': typeof MerchandiseRoute
   '/results': typeof ResultsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/constitution': typeof ConstitutionRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/history': typeof HistoryRoute
   '/lessons': typeof LessonsRoute
   '/membership': typeof MembershipRoute
+  '/merchandise': typeof MerchandiseRoute
   '/results': typeof ResultsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/constitution': typeof ConstitutionRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/history': typeof HistoryRoute
   '/lessons': typeof LessonsRoute
   '/membership': typeof MembershipRoute
+  '/merchandise': typeof MerchandiseRoute
   '/results': typeof ResultsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lessons' | '/membership' | '/results'
+  fullPaths:
+    | '/'
+    | '/constitution'
+    | '/contact'
+    | '/gallery'
+    | '/history'
+    | '/lessons'
+    | '/membership'
+    | '/merchandise'
+    | '/results'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lessons' | '/membership' | '/results'
-  id: '__root__' | '/' | '/lessons' | '/membership' | '/results'
+  to:
+    | '/'
+    | '/constitution'
+    | '/contact'
+    | '/gallery'
+    | '/history'
+    | '/lessons'
+    | '/membership'
+    | '/merchandise'
+    | '/results'
+  id:
+    | '__root__'
+    | '/'
+    | '/constitution'
+    | '/contact'
+    | '/gallery'
+    | '/history'
+    | '/lessons'
+    | '/membership'
+    | '/merchandise'
+    | '/results'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConstitutionRoute: typeof ConstitutionRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  HistoryRoute: typeof HistoryRoute
   LessonsRoute: typeof LessonsRoute
   MembershipRoute: typeof MembershipRoute
+  MerchandiseRoute: typeof MerchandiseRoute
   ResultsRoute: typeof ResultsRoute
 }
 
@@ -76,6 +154,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/constitution': {
+      id: '/constitution'
+      path: '/constitution'
+      fullPath: '/constitution'
+      preLoaderRoute: typeof ConstitutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lessons': {
@@ -92,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MembershipRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchandise': {
+      id: '/merchandise'
+      path: '/merchandise'
+      fullPath: '/merchandise'
+      preLoaderRoute: typeof MerchandiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/results': {
       id: '/results'
       path: '/results'
@@ -104,8 +217,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConstitutionRoute: ConstitutionRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  HistoryRoute: HistoryRoute,
   LessonsRoute: LessonsRoute,
   MembershipRoute: MembershipRoute,
+  MerchandiseRoute: MerchandiseRoute,
   ResultsRoute: ResultsRoute,
 }
 export const routeTree = rootRouteImport
