@@ -9,7 +9,7 @@ export function Footer() {
       <div className="hairline" />
       <div className="container-site grid gap-12 py-16 md:grid-cols-[1.2fr_1fr_1fr] md:py-20">
         <div>
-          <Logo variant="badge" size={140} />
+          <Logo size={64} />
           <p className="mt-6 max-w-xs text-cream/75">A small, friendly BHS-affiliated riding club in Mid Sussex, Area 13. Everyone's welcome.</p>
         </div>
         <div>

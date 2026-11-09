@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { images } from "@/lib/site";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 export function Splash({ onEnter, onDone }: { onEnter: () => void; onDone: () => void }) {
   const [leaving, setLeaving] = useState(false);
@@ -37,7 +37,7 @@ export function Splash({ onEnter, onDone }: { onEnter: () => void; onDone: () =>
       <div className="splash-stack flex flex-1 flex-col items-center justify-center gap-6 py-6 text-center">
         <div className="anim-logo" style={{ animationDelay: ".4s" }}>
           <img
-            src={logo.url}
+            src={logo}
             alt="West End Riding Club"
             style={{ height: "clamp(90px, 16vh, 150px)", width: "auto", objectFit: "contain", display: "block" }}
           />
