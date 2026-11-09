@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
-import logo from "@/assets/logo.png.asset.json";
-import badge from "@/assets/logo-badge-cream.webp.asset.json";
+import logo from "@/assets/logo.png";
 import { CLUB_NAME } from "@/lib/site";
 
-export function Logo({ size = 44, variant = "wide", className = "", style }: { size?: number | string; variant?: "wide" | "badge"; className?: string; style?: CSSProperties }) {
-  const src = variant === "badge" ? badge.url : logo.url;
-  const dim = variant === "badge" ? { width: size, height: "auto" } : { height: size, width: "auto" };
-  return <img src={src} alt={CLUB_NAME} className={className} style={{ ...dim, objectFit: "contain", display: "block", maxWidth: "100%", ...style }} />;
+export function Logo({ size = 44, className = "", style }: { size?: number | string; className?: string; style?: CSSProperties }) {
+  const dim = { height: size, width: "auto" };
+  return <img src={logo} alt={CLUB_NAME} className={className} style={{ ...dim, objectFit: "contain", display: "block", maxWidth: "100%", ...style }} />;
 }
 
 export function Reveal({ children, delay = 0, className = "", as: Tag = "div" }: { children: ReactNode; delay?: number; className?: string; as?: "div" | "li" | "section" }) {
