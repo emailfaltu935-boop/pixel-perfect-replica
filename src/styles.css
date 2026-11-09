@@ -161,6 +161,24 @@
 .splash.is-leaving .splash-bg { transform: scale(1.08); filter: blur(6px); }
 .splash.is-leaving .splash-stack { transform: translateY(-24px); }
 
+/* splash cta pulse + hint bounce */
+.splash-cta { box-shadow: 0 6px 20px -6px oklch(0.87 0.18 92 / 55%); animation: fade-in 1s ease forwards, cta-pulse 3.2s ease-in-out 2.4s infinite; }
+.splash-cta:hover { box-shadow: 0 12px 28px -8px oklch(0.87 0.18 92 / 70%); }
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 6px 20px -6px oklch(0.87 0.18 92 / 55%); }
+  50% { box-shadow: 0 6px 30px -2px oklch(0.87 0.18 92 / 80%); }
+}
+.splash-bounce { animation: hint-bounce 1.8s ease-in-out infinite; }
+@keyframes hint-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* tight screens: shrink splash centre gaps instead of overlapping */
+@media (max-height: 720px) {
+  .splash .splash-stack { gap: 14px; }
+}
+
 /* app entrance under splash */
 .app-shell { transition: opacity 1.6s ease-in-out; }
 .app-shell[data-entered="false"] { opacity: 0; }
